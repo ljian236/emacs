@@ -1,3 +1,17 @@
+;;el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+ 
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+ 
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+
 ;; So the idea is that you copy/paste this code into your *scratch* buffer,
 ;; hit C-j, and you have a working el-get.
 ;;(url-retrieve
@@ -73,3 +87,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;;  color-theme-solarized
+(load-theme 'solarized t)
+
+;; set default font
+(set-default-font "Courier New-18")
+
+
+(global-linum-mode 1)
+(setq linum-format "%d")
